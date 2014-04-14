@@ -1,4 +1,5 @@
 #!/usr/bin/python
+import argparse
 import dns.resolver
 from multiprocessing.dummy import Pool as ThreadPool
 
@@ -58,5 +59,10 @@ class HostsUpdater():
 
 
 if __name__ == '__main__':
-    hostupdater = HostsUpdater('hosts','hosts.out')
+    parser = argparse.ArgumentParser(description='process hosts file')
+    parser.add_argument('infile', type=str, help="hosts file, for example /etc/hosts")
+    parser.add_argument('outfile', type=str, help="output file")
+    args = parser.parse_args()
+
+    hostupdater = HostsUpdater(args.infile, args.outfile)
     hostupdater.run()
