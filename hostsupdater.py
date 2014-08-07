@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 import argparse
 import dns.resolver
 from multiprocessing.dummy import Pool as ThreadPool
